@@ -1,7 +1,17 @@
-# The prime factors of 13195 are 5, 7, 13 and 29.
-# What is the largest prime factor of the number 600851475143 ?
 defmodule Euler_3 do
   @num 600851475143
+
+  @doc """
+  The prime factors of 13195 are 5, 7, 13 and 29.
+
+  What is the largest prime factor of the number 600851475143 ?
+
+  ## Solution
+
+    iex> Euler_3.solve
+    6857
+
+  """
   def solve do
     sqrt = Kernel.trunc(:math.sqrt(@num))
     sqrt..1
@@ -20,4 +30,3 @@ defmodule Euler_3 do
   end
 end
 
-IO.puts Euler_3.solve
