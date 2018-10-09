@@ -1,6 +1,6 @@
-defmodule Euler_4 do
+defmodule Euler4 do
 
-  @doc """
+  @moduledoc """
   A palindromic number reads the same both ways. The largest palindrome made from
   the product of two 2-digit numbers is 9009 = 91 × 99.
 
@@ -8,13 +8,13 @@ defmodule Euler_4 do
 
   ## Solution
 
-    iex> Euler_4.solve
+    iex> Euler4.solve
     906609
 
   """
   def solve do
     palindromes = for i <- 100..999, j <- i..999,
-        is_palindrome( i * j ),
+        is_palindrome(i * j),
         into: [],
       do: i * j
 

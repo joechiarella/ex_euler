@@ -1,15 +1,15 @@
-defmodule Euler_7 do
-  @count 10001
-
-  @doc """
+defmodule Euler7 do
+  @moduledoc """
   What is the 10 001st prime number?
 
   ## Solution
 
-    iex> Euler_7.solve
+    iex> Euler7.solve
     104743
 
   """
+  @count 10_001
+
   def solve do
     find_prime(3, 2, [2, 3])
   end
@@ -41,5 +41,3 @@ defmodule Euler_7 do
     rem(n, factor) == 0
   end
 end
-
-IO.puts Euler_7.solve

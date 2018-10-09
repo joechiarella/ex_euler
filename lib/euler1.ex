@@ -1,5 +1,5 @@
-defmodule Euler_1 do
-  @doc """
+defmodule Euler1 do
+  @moduledoc """
   If we list all the natural numbers below 10 that are multiples of 3 or 5,
   we get 3, 5, 6 and 9. The sum of these multiples is 23.
 
@@ -7,7 +7,7 @@ defmodule Euler_1 do
 
   ## Solution
 
-    iex> Euler_1.solve
+    iex> Euler1.solve
     233168
 
   """
