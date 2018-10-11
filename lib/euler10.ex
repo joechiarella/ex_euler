@@ -6,33 +6,29 @@ defmodule Euler10 do
   """
 
   def solve(max \\ 2_000_000) do
-    Enum.sum(find_primes(5, max, [2, 3]))
+    not_primes = MapSet.new
+    sum_primes(2, max, not_primes)
   end
 
-  def find_primes(current_num, max, prime_list) when current_num < max do
-    if is_prime(current_num, prime_list) do
-      find_primes(current_num + 2, max, prime_list ++ [current_num])
+  def sum_primes(current, max, not_primes) when current < max do
+    if MapSet.member?(not_primes, current) do
+      sum_primes(current + 1, max, not_primes)
     else
-      find_primes(current_num + 2, max, prime_list)
+      current + sum_primes(current + 1, max, add_prime(not_primes, current, max))
     end
   end
 
-  def find_primes(_, _, prime_list) do
-    prime_list
+  def sum_primes(_, _, _) do
+    0
   end
 
-  def is_prime(n, [factor | prime_list]) when factor * factor <= n do
-    if is_factor(n, factor) do
-      false
-    else
-      is_prime(n, prime_list)
-    end
+  def add_prime(not_primes, prime, max) do
+    Stream.iterate(prime, &(&1 + prime))
+    |> Stream.take_while(&(&1 < max))
+    |> Enum.to_list()
+    |> MapSet.new()
+    |> MapSet.union(not_primes)
   end
 
-  def is_prime(_, _), do: true
-
-  def is_factor(n, factor) do
-    rem(n, factor) == 0
-  end
 
 end
