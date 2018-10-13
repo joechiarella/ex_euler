@@ -23,9 +23,8 @@ defmodule Euler10 do
   end
 
   def add_prime(not_primes, prime, max) do
-    Stream.iterate(prime, &(&1 + prime))
-    |> Stream.take_while(&(&1 < max))
-    |> Enum.to_list()
+    Stream.iterate(prime * 2, &(&1 + prime))
+    |> Enum.take_while(&(&1 < max))
     |> MapSet.new()
     |> MapSet.union(not_primes)
   end
