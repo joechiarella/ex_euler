@@ -34,40 +34,24 @@ defmodule Euler11 do
     map = grid_to_map(@grid)
     for i <- 1..@width, j <- 1..@height, into: [] do
       [
-        down(map, i, j),
-        across(map, i, j),
-        down_right(map, i, j),
-        down_left(map, i, j)
+        get_sequence(map, i, j, &down_index/3),
+        get_sequence(map, i, j, &across_index/3),
+        get_sequence(map, i, j, &down_right_index/3),
+        get_sequence(map, i, j, &down_left_index/3)
       ]
       |> Enum.max()
     end
     |> Enum.max()
   end
 
-  def down(map, i, j) do
-    for count <- 0..3, into: [] do
-      Map.get(map, {i + count, j}, 1)
-    end
-    |> Enum.reduce(1, &(&1 * &2))
-  end
+  def down_index(i, j, count), do: {i + count, j}
+  def across_index(i, j, count), do: {i, j + count}
+  def down_right_index(i, j, count), do: {i + count, j + count}
+  def down_left_index(i, j, count), do: {i + count, j - count}
 
-  def across(map, i, j) do
+  def get_sequence(map, i, j, direction) do
     for count <- 0..3, into: [] do
-      Map.get(map, {i, j + count}, 1)
-    end
-    |> Enum.reduce(1, &(&1 * &2))
-  end
-
-  def down_right(map, i, j) do
-    for count <- 0..3, into: [] do
-      Map.get(map, {i + count, j + count}, 1)
-    end
-    |> Enum.reduce(1, &(&1 * &2))
-  end
-
-  def down_left(map, i, j) do
-    for count <- 0..3, into: [] do
-      Map.get(map, {i + count, j - count}, 1)
+      Map.get(map, direction.(i, j, count), 1)
     end
     |> Enum.reduce(1, &(&1 * &2))
   end
