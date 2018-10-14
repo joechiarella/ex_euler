@@ -16,10 +16,11 @@ defmodule Euler14 do
   """
 
   require Integer
+  use Memoize
 
   def solve do
     {num, _} = for num <- 1..1_000_000, into: [] do
-      {num, collatz_length(num)}
+      {num, collatz_length(num, 0)}
     end
     |> Enum.reduce({1, 1}, &longest/2)
     num
@@ -31,14 +32,16 @@ defmodule Euler14 do
 
   def longest(_, new_longest), do: new_longest
 
-  def collatz_length(1), do: 1
+  def collatz_length(_, length \\ 0)
 
-  def collatz_length(num) when Integer.is_even(num) do
-    1 + collatz_length(div(num, 2))
+  def collatz_length(1, length), do: length + 1
+
+  def collatz_length(num, length) when Integer.is_even(num) do
+    collatz_length(div(num, 2), length + 1)
   end
 
-  def collatz_length(num) do
-    1 + collatz_length(3 * num + 1)
+  def collatz_length(num, length) do
+    collatz_length(3 * num + 1, length + 1)
   end
 
 end
