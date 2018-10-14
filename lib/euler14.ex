@@ -19,7 +19,7 @@ defmodule Euler14 do
   use Memoize
 
   def solve do
-    {num, _} = for num <- 1..1_000_000, into: [] do
+    {num, _} = for num <- 500_000..1_000_000, into: [] do
       {num, collatz_length(num, 0)}
     end
     |> Enum.reduce({1, 1}, &longest/2)
@@ -41,7 +41,7 @@ defmodule Euler14 do
   end
 
   def collatz_length(num, length) do
-    collatz_length(3 * num + 1, length + 1)
+    collatz_length(div(3 * num + 1, 2), length + 2)
   end
 
 end
