@@ -16,7 +16,6 @@ defmodule Euler14 do
   """
 
   require Integer
-  use Memoize
 
   def solve do
     {num, _} = for num <- 500_000..1_000_000, into: [] do
