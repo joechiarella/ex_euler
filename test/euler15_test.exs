@@ -6,6 +6,6 @@ defmodule Euler15Test do
   end
 
   test "Solves Euler #15 size = 12" do
-    assert Euler15.solve(20) == 2704156
+    assert Euler15.solve(20) == 137846528820
   end
 end
