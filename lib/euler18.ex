@@ -33,10 +33,13 @@ defmodule Euler18 do
     |> reduce
   end
 
+  # when the triangle is collapsed down to one row with one value, that's the
+  # answer
   def reduce([[last_value] | []]) do
     last_value
   end
 
+  # take the bottom two rows of the triangle and merge them
   def reduce([bottom_row | [second_row | rest]]) do
     merged_row = reduce_row(bottom_row)
     |> merge_with(second_row)
@@ -44,23 +47,29 @@ defmodule Euler18 do
     reduce([merged_row | rest])
   end
 
+  # merges two lists (of the same size) together, adding their values
   def merge_with(first, second) do
     Enum.zip(first, second)
     |> Enum.map(fn {a, b} -> a + b end)
   end
 
+  # if the row has a single value, nothing to merge
   def reduce_row([a | []]) do
     [ a ]
   end
 
+  # row with two values, take the higher and stop
   def reduce_row([a | [b | []]]) do
     [ max(a, b) ]
   end
 
+  # row with more than 2 values, take max of first two and recurse
   def reduce_row([a | [b | rest]]) do
     [ max(a, b) | reduce_row([b | rest]) ]
   end
 
+  # convert the triangle to a list of lists, and reverse them so the widest
+  # row is on top
   def string_to_lists(triangle) do
     String.split(triangle, "\n", trim: true)
     |> Enum.map(&row_to_list(&1))
