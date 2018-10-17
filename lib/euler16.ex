@@ -7,8 +7,7 @@ defmodule Euler16 do
 
   def solve do
     pow(2, 1000)
-    |> Integer.to_charlist
-    |> Enum.map(&(&1 - ?0))
+    |> Integer.digits
     |> Enum.sum
   end
 

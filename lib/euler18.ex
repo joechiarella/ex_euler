@@ -54,12 +54,12 @@ defmodule Euler18 do
   end
 
   # if the row has a single value, nothing to merge
-  def reduce_row([a | []]) do
+  def reduce_row([a]) do
     [ a ]
   end
 
   # row with two values, take the higher and stop
-  def reduce_row([a | [b | []]]) do
+  def reduce_row([a | [b]]) do
     [ max(a, b) ]
   end
 

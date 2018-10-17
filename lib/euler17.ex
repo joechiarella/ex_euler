@@ -47,7 +47,7 @@ defmodule Euler17 do
 
   def to_english(1000), do: "one thousand"
 
-  def to_english(num) when num >=20 and num < 100 do
+  def to_english(num) when num >= 20 and num < 100 do
     tens = div(num, 10)
     ones = rem(num, 10)
     to_english(tens * 10) <> " " <> to_english(ones)

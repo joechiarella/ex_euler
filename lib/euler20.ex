@@ -5,8 +5,7 @@ defmodule Euler20 do
 
   def solve() do
     factorial(100)
-    |> Integer.to_charlist
-    |> Enum.map(&(&1 - ?0))
+    |> Integer.digits
     |> Enum.sum
   end
 
