@@ -12,15 +12,15 @@ defmodule Euler21 do
   """
 
   def solve() do
-    for n <- 1..9999, is_amicable(n) do
-      n
+    for a <- 1..9999,
+      b = sum_of_divisors(a),
+      b > a,
+      sum_of_divisors(b) == a
+    do
+      [a, b]
     end
+    |> List.flatten
     |> Enum.sum
-  end
-
-  def is_amicable(num) do
-    other_num = sum_of_divisors(num)
-    other_num != num and other_num < 10_000 and sum_of_divisors(other_num) == num
   end
 
   def sum_of_divisors(1), do: 1
