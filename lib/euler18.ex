@@ -29,7 +29,8 @@ defmodule Euler18 do
   """
 
   def solve(triangle) do
-    string_to_lists(triangle)
+    triangle
+    |> string_to_lists
     |> reduce
   end
 
@@ -41,43 +42,48 @@ defmodule Euler18 do
 
   # take the bottom two rows of the triangle and merge them
   def reduce([bottom_row | [second_row | rest]]) do
-    merged_row = reduce_row(bottom_row)
-    |> merge_with(second_row)
+    merged_row =
+      bottom_row
+      |> reduce_row
+      |> merge_with(second_row)
 
     reduce([merged_row | rest])
   end
 
   # merges two lists (of the same size) together, adding their values
   def merge_with(first, second) do
-    Enum.zip(first, second)
+    first
+    |> Enum.zip(second)
     |> Enum.map(fn {a, b} -> a + b end)
   end
 
   # if the row has a single value, nothing to merge
   def reduce_row([a]) do
-    [ a ]
+    [a]
   end
 
   # row with two values, take the higher and stop
   def reduce_row([a | [b]]) do
-    [ max(a, b) ]
+    [max(a, b)]
   end
 
   # row with more than 2 values, take max of first two and recurse
   def reduce_row([a | [b | rest]]) do
-    [ max(a, b) | reduce_row([b | rest]) ]
+    [max(a, b) | reduce_row([b | rest])]
   end
 
   # convert the triangle to a list of lists, and reverse them so the widest
   # row is on top
   def string_to_lists(triangle) do
-    String.split(triangle, "\n", trim: true)
+    triangle
+    |> String.split("\n", trim: true)
     |> Enum.map(&row_to_list(&1))
     |> Enum.reverse()
   end
 
   def row_to_list(row) do
-    String.split(row, " ")
+    row
+    |> String.split(" ")
     |> Enum.map(&String.to_integer(&1))
   end
 end

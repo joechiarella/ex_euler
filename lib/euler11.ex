@@ -57,14 +57,16 @@ defmodule Euler11 do
   end
 
   def grid_to_map(grid) do
-    String.split(grid, "\n", trim: true)
+    grid
+    |> String.split("\n", trim: true)
     |> Enum.with_index()
     |> Enum.map(&row_to_map(&1))
     |> Enum.reduce(%{}, &Map.merge(&1, &2))
   end
 
   def row_to_map({row, row_num}) do
-    String.split(row, " ")
+    row
+    |> String.split(" ")
     |> Enum.with_index()
     |> Enum.reduce(%{}, &add_to_map(row_num, &1, &2))
   end

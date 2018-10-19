@@ -12,9 +12,10 @@ defmodule Euler24 do
   """
 
   def solve() do
-    get_permutations('0123456789')
+    '0123456789'
+    |> get_permutations
     |> Enum.at(999_999)
-    |> List.to_integer()
+    |> List.to_integer
   end
 
   def get_permutations([a]), do: [[a]]

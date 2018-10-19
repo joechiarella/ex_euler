@@ -22,9 +22,9 @@ defmodule Euler23 do
 
   def solve() do
     abundants = list_abundants()
-    MapSet.difference(MapSet.new(1..@max), MapSet.new(get_abundant_sums(abundants)))
-    # |> Enum.sort()
-    # |> Enum.each(&IO.puts/1)
+    1..@max
+    |> MapSet.new
+    |> MapSet.difference(MapSet.new(get_abundant_sums(abundants)))
     |> Enum.sum()
   end
 

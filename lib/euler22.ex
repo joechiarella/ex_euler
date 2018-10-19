@@ -24,9 +24,10 @@ defmodule Euler22 do
   end
 
   def name_score({name, index}) do
-    value = String.to_charlist(name)
-    |> Enum.map(&(&1 - ?A + 1))
-    |> Enum.sum
+    value = name
+      |> String.to_charlist
+      |> Enum.map(&(&1 - ?A + 1))
+      |> Enum.sum
     value * index
   end
 
