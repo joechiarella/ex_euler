@@ -114,5 +114,4 @@ defmodule Euler13 do
     |> String.to_integer()
   end
 
-
 end

@@ -17,7 +17,7 @@ defmodule Euler9 do
     2. A < B < C, so A has to be less than 1000/3
     3. Therefore, B < 1000 - (A + B), or simplified, B < 500 - A/2
   """
-  def solve() do
+  def solve do
     [solution] =
       for a <- 1..333,
           b <- a..(500 - div(a, 2)),

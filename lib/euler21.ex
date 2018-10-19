@@ -11,7 +11,7 @@ defmodule Euler21 do
   Evaluate the sum of all the amicable numbers under 10000.
   """
 
-  def solve() do
+  def solve do
     for a <- 1..9999,
       b = sum_of_divisors(a),
       b > a,
@@ -35,6 +35,5 @@ defmodule Euler21 do
     |> Enum.sum()
     divisors + 1
   end
-
 
 end

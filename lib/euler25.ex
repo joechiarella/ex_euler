@@ -8,7 +8,7 @@ defmodule Euler25 do
 
   use Memoize
 
-  def solve() do
+  def solve do
     Stream.iterate(1, &(&1 + 1))
     |> Stream.map(&fib/1)
     |> Stream.with_index(1)

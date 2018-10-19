@@ -11,7 +11,7 @@ defmodule Euler24 do
   5, 6, 7, 8 and 9?
   """
 
-  def solve() do
+  def solve do
     '0123456789'
     |> get_permutations
     |> Enum.at(999_999)
@@ -27,6 +27,5 @@ defmodule Euler24 do
       [a | permutation]
     end
   end
-
 
 end

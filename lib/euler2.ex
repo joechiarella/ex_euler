@@ -34,4 +34,3 @@ defmodule Euler2 do
 
   def fib_sum(_, _), do: 0
 end
-

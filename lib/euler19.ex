@@ -4,7 +4,7 @@ defmodule Euler19 do
   31 Dec 2000)?
   """
 
-  def solve() do
+  def solve do
     for year <- 1901..2000, month <- 1..12,
       month_starts_with_sunday?(year, month) do
       1

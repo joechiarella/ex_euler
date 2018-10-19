@@ -48,4 +48,3 @@ defmodule Euler5 do
     rem(n, factor) == 0
   end
 end
-

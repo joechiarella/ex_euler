@@ -29,5 +29,4 @@ defmodule Euler10 do
     |> MapSet.union(not_primes)
   end
 
-
 end

@@ -30,7 +30,7 @@ defmodule Euler11 do
   @width 20
   @height 20
 
-  def solve() do
+  def solve do
     map = grid_to_map(@grid)
     for i <- 1..@width, j <- 1..@height, into: [] do
       [

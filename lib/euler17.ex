@@ -64,6 +64,4 @@ defmodule Euler17 do
 
   end
 
-
-
 end

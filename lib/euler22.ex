@@ -13,7 +13,7 @@ defmodule Euler22 do
   What is the total of all the name scores in the file?
   """
 
-  def solve() do
+  def solve do
     File.read!("data/p022_names.txt")
     |> String.split(",")
     |> Enum.map(&(String.trim(&1, "\"")))
@@ -30,7 +30,5 @@ defmodule Euler22 do
       |> Enum.sum
     value * index
   end
-
-
 
 end

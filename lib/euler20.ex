@@ -3,7 +3,7 @@ defmodule Euler20 do
   Find the sum of the digits in the number 100!
   """
 
-  def solve() do
+  def solve do
     factorial(100)
     |> Integer.digits
     |> Enum.sum

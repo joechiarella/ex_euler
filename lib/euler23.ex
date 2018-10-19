@@ -20,7 +20,7 @@ defmodule Euler23 do
 
   @max 28_123
 
-  def solve() do
+  def solve do
     abundants = list_abundants()
     1..@max
     |> MapSet.new
@@ -38,7 +38,7 @@ defmodule Euler23 do
   end
   def get_combinations(_, _), do: []
 
-  def list_abundants() do
+  def list_abundants do
     for i <- 12..@max, is_abundant(i), do: i
   end
 
