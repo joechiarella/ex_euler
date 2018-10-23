@@ -20,6 +20,16 @@ defmodule Euler26 do
   """
 
   def solve do
+    {d, _} = find_longest_cycle()
+    d
+  end
+
+  def find_longest_cycle do
+    for d <- 2..1000,
+      mult = Math.multiplicative_order(10, d) do
+      {d, mult}
+    end
+    |> Enum.max_by(fn {_, mult} -> mult end)
   end
 
 end
