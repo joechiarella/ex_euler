@@ -13,7 +13,7 @@ defmodule Euler27 do
     a * b
   end
 
-  def find_max_coefficients() do
+  def find_max_coefficients do
     for a <- -1000..1000, b <- 0..1000,
         a > 1 - b,
         Math.is_prime(b) do

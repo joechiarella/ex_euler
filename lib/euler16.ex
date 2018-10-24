@@ -10,7 +10,4 @@ defmodule Euler16 do
     |> Integer.digits
     |> Enum.sum
   end
-
-
-
 end
