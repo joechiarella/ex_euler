@@ -6,13 +6,11 @@ defmodule Euler16 do
   """
 
   def solve do
-    pow(2, 1000)
+    Math.pow(2, 1000)
     |> Integer.digits
     |> Enum.sum
   end
 
-  def  pow(n, k), do: pow(n, k, 1)
-  defp pow(_, 0, acc), do: acc
-  defp pow(n, k, acc), do: pow(n, k - 1, n * acc)
+
 
 end

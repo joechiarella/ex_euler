@@ -35,4 +35,8 @@ defmodule Math do
     rem(n, factor) == 0
   end
 
+  def  pow(n, k), do: pow(n, k, 1)
+  defp pow(_, 0, acc), do: acc
+  defp pow(n, k, acc), do: pow(n, k - 1, n * acc)
+
 end
